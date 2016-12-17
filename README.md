@@ -1,4 +1,4 @@
-# Typo Game
+# Typing Game
 
 
 Halo semua kita contribute di repo ini ya untuk ngembangin gamesnya bung Yoma Irama untuk tahap awal. Kalau udah selesai nanti lanjut buat games tahap kedua untuk game hub dari beberapa games :+1:
@@ -13,15 +13,18 @@ Jobdesk masing2:
 
 Agenda/Step project:
 
-1. Tema, desain, asset character, map dll sebagai resource untuk membuat game typo berikut HTML & CSS 
-2. Desain Battle Scene berikut asset dan HTML CSS
+1. Tema, desain, asset character, map dll sebagai resource untuk membuat typing game berikut HTML & CSS 
+2. Desain Battle Scene berikut asset, HTML, & CSS
 
 
 Keterangan:
 
-* Untuk kontribusi pakai branch development ya.. kalau sudah fix nnti tinggal di merge ke master :+1:
+* Struktur HTML jangan dirubah yaa di dalem index.html kalau mau tambahin tag tinggal create element dari nama id dalem div masing2
+* Untuk kontribusi pakai branch development. kalau sudah fix nnti tinggal di merge ke master 
 * Folder asset digunakan sebagai penyimpanan gambar, lagu, dll
 * Folder Kumpulan Soal & Jawaban bentuknya txt aja didalemnya untuk dimasukin ke dalam HTML atau JS nantinya
-* Buat keseluruhan HTML CSS dan JS pada index.html. Tinggal buat external Link CSS dan JS didalamnya
-* Inget selalu di pull sebelum push karena kalau ada update pasti dari setiap orang.. buat message yang jelas pas commit biar jelas apa yang di update sama kasih tanggal aja biar jelas.. Thank You!
+* Inget selalu di pull sebelum push untuk antisipasi kalau ada update dari setiap orang. Buat message yang jelas pas commit biar tau apa yang di update sama kasih tanggal.. Thank You! :+1:
+
+
+Note: Kalau ada masukan atau pertanyaan kita discuss via slack yaa
 
