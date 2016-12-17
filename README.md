@@ -17,4 +17,10 @@ Agenda/Step project:
 2. Desain Battle Scene berikut asset dan HTML CSS
 
 
-Untuk kontribusi pakai branch development ya.. kalau sudah fix nnti tinggal di merge ke master :+1:
+Keterangan:
+
+* Untuk kontribusi pakai branch development ya.. kalau sudah fix nnti tinggal di merge ke master :+1:
+* Folder asset digunakan sebagai penyimpanan gambar, lagu, dll
+* Folder Kumpulan Soal & Jawaban bentuknya txt aja didalemnya untuk dimasukin ke dalam HTML atau JS nantinya
+* Buat keseluruhan HTML CSS dan JS pada index.html. Tinggal buat external Link CSS dan JS didalamnya
+
