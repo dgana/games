@@ -23,4 +23,5 @@ Keterangan:
 * Folder asset digunakan sebagai penyimpanan gambar, lagu, dll
 * Folder Kumpulan Soal & Jawaban bentuknya txt aja didalemnya untuk dimasukin ke dalam HTML atau JS nantinya
 * Buat keseluruhan HTML CSS dan JS pada index.html. Tinggal buat external Link CSS dan JS didalamnya
+* Inget selalu di pull sebelum push karena kalau ada update pasti dari setiap orang.. buat message yang jelas pas commit biar jelas apa yang di update sama kasih tanggal aja biar jelas.. Thank You!
 
