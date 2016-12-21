@@ -4,15 +4,15 @@ Easy: Tebak kata-kata cinta dari berbagai bahasa
 Medium: Melengkapi kata dalam peribahasa 
 Hard: Melengkapi Quotes dari tokoh yang terkenal
 
--	Sejarah (sepertinya soal pakai image): 
+-	Sejarah: 
 Easy: serba jadoel (peristiwa, permainan tradisional, lagu, buku, makanan, minuman)
 Medium: benda-benda sejarah khas Indonesia 
 Hard: nama-nama museum dan monumen bersejarah di dunia
 
--	Seni musik: 
-Easy: Tebak potongan lirik lagu masa kini
-Medium: Tebak pencipta lagu/musik klasik
-Hard: Tebak kunci nada pada lagu2 populer 
+-	Seni: 
+Easy: Tebak potongan lirik lagu masa kini dan tebak mix warna
+Medium: Tebak pencipta lagu/musik klasik dan lukisan yang terkenal
+Hard: Tebak kunci nada pada lagu2 populer dan sang pelukis
 
 -	Biologi: 
 Easy: cara hidup makhluk hidup
@@ -23,21 +23,6 @@ Hard: teori dan fenomena alam
 Easy: tebak film
 Medium: nama tokoh perfilman 
 Hard: teknis dalam pembuatan film
-
--	Seni lukis (soal pakai image):
-Easy: Tebak Hasil Mix Warna
-Medium: Tebak nama lukisan terkenal
-Hard: Tebak sang pelukis dari lukisannya
-
--	Sastra:
-Easy: Tebak karya sastra yang diangkat ke layar lebar
-Medium: Tebak pengarang buku sastra
-Hard: Tebak tokoh sastra yang terkenal di dunia
-
--	Sport: 
-Easy: Jenis jenis olahraga dan perlombaannya
-Medium: Nama olahragawan yang berprestasi
-Hard: Aturan dalam berbagai olahraga
 
 -	Fisika:
 Easy: Macam-macam hukum fisika
@@ -53,3 +38,10 @@ Hard: Proses kimiawi
 Easy: Nama-nama perkakas (tools: hw/sf/apps) yang berhubungan dengan teknologi
 Medium: Tokoh penemu teknologi di dunia
 Hard: Teknologi masa kini dan prediksi masa depan
+
+-	Sport: 
+Easy: Jenis jenis olahraga dan perlombaannya
+Medium: Nama olahragawan yang berprestasi
+Hard: Aturan dalam berbagai olahraga
+
+- Matematika
