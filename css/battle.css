@@ -16,7 +16,7 @@ body {
 }
 
 .background-arena1 {
-    background: url('../asset/img/battle/background-arena1.png') no-repeat center 100%;
+    background: url('../asset/img/battle/background-arena1-edit.png') no-repeat center 100%;
     background-size: cover;
     height: 100%;
 }
@@ -217,8 +217,8 @@ body {
 
 .game-button {
     position: absolute;
-    width: 175px;
-    height: 150px;
+    width: 125px;
+    height: 110px;
     border-radius: 25%;
     background-color: rgba(167, 167, 167, 0.7);
     cursor: pointer;
