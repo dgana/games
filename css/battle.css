@@ -48,18 +48,33 @@ body {
     /*background-color: rgba(214, 209, 95, 0.8);*/
 }
 
-.question {
+#question {
     position: absolute;
     right: 35%;
-    top: 40%;
+    top: 38%;
     height: 10%;
     width: 30%;
     text-align: center;
     font-size: 44px;
-    font-family: 'russo one';
-    /*background-color: rgba(179, 186, 168, 0.4);*/
-    /*border-radius: 25px;*/
+    font-family: 'russo one', cursive;
     line-height: 75px;
+    transition: 1s;
+    /*background-color: rgba(69, 158, 61, 0.8);*/
+}
+
+#timer {
+    position: absolute;
+    right: 46%;
+    top: 20%;
+    height: 10%;
+    width: 8%;
+    text-align: center;
+    font-size: 76px;
+    font-family: 'bungee shade', cursive;
+    line-height: 75px;
+    transition: 0.4s;
+    visibility: hidden;
+    opacity: 0;
     /*background-color: rgba(69, 158, 61, 0.8);*/
 }
 
@@ -78,7 +93,7 @@ body {
     color: black;
     margin-bottom: 5px;
     font-size: 24px;
-    font-family: 'russo one';
+    font-family: 'russo one', cursive;
 }
 
 #player-health-bar {
@@ -92,7 +107,7 @@ body {
     margin: 2px;
     color: black;
     font-size: 22px;
-    font-family: 'orbitron';
+    font-family: 'orbitron', cursive;
 }
 
 .monster-status {
@@ -111,7 +126,7 @@ body {
     font-size: 22px;
     float: right;
     font-size: 24px;
-    font-family: 'russo one';
+    font-family: 'russo one', cursive;
 }
 
 #monster-health-bar {
@@ -127,7 +142,7 @@ body {
     color: black;
     font-size: 22px;
     float: right;
-    font-family: 'orbitron';
+    font-family: 'orbitron', cursive;
 }
 
 .player-text-box {
@@ -164,7 +179,7 @@ body {
     left: 25%;
 }
 
-#player-avatar-image {
+#player-avatar-idle {
     max-width: 120px;
 }
 
@@ -190,12 +205,12 @@ body {
 .answer-button {
     position: absolute;
     right: 29%;
-    top: 50%;
+    top: 53%;
     height: 20%;
     width: 45%;
     text-align: center;
     font-size: 44px;
-    font-family: 'russo one';
+    font-family: 'russo one', cursive;
     /*background-color: rgba(179, 186, 168, 0.4);*/
     line-height: 50px;
 }
@@ -205,10 +220,17 @@ body {
     width: 175px;
     height: 150px;
     border-radius: 25%;
-    background-color: rgba(167, 167, 167, 0.8);
+    background-color: rgba(167, 167, 167, 0.7);
     cursor: pointer;
     font-size: 30px;
-    font-family: 'russo one';
+    font-family: 'russo one', cursive;
+    transition: 0.3s;
+}
+
+.game-button:hover {
+    background-color: rgba(167, 167, 167, 1);
+    font-size: 34px;
+    border: 3px solid rgb(67, 69, 67);
 }
 
 .game-button:focus {
@@ -233,4 +255,51 @@ body {
 #answer-button-4 {
     bottom: 10%;
     left: 74%;
+}
+
+
+/*/////////////////////////////// Player & Monster Hit Damage Box /////////////////////////////////*/
+
+#player-hit-damage-box {
+    position: absolute;
+    left: 20%;
+    top: 32%;
+    height: 125px;
+    width: 200px;
+}
+
+#monster-hit-damage-box {
+    position: absolute;
+    right: 11%;
+    top: 32%;
+    height: 125px;
+    width: 200px;
+}
+
+#player-hit-damage-box p {
+    text-align: center;
+    font-family: 'Russo One';
+    color: rgb(205, 51, 51);
+    font-weight: bold;
+    line-height: 55px;
+    font-size: 36px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 1.2s;
+    position: absolute;
+    bottom: 5px;
+}
+
+#monster-hit-damage-box p {
+    text-align: center;
+    font-family: 'Russo One';
+    color: rgb(205, 51, 51);
+    font-weight: bold;
+    line-height: 55px;
+    font-size: 36px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 1.2s;
+    position: absolute;
+    bottom: 5px;
 }

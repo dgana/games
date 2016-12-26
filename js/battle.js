@@ -17,12 +17,68 @@ let createMonster = document.createElement('div');
 createMonster.setAttribute('class', 'monster');
 arena.appendChild(createMonster);
 
+// Create Question Box!
 let createQuestion = document.createElement('div');
-createQuestion.setAttribute('class', 'question');
+createQuestion.setAttribute('id', 'question');
 arena.appendChild(createQuestion);
 
-let question = document.getElementsByClassName('question')[0];
+let question = document.getElementById('question');
 question.innerHTML = '100 + 80 = ?';
+
+
+setTimeout(function() {
+    question.style.fontSize = '46px';
+}, 1000);
+
+setInterval(function() {
+    question.style.fontSize = '44px';
+    setTimeout(function() {
+        question.style.fontSize = '46px';
+    }, 1000);
+}, 2000);
+
+
+
+// Create Timer Box!
+let createTimer = document.createElement('div');
+createTimer.setAttribute('id', 'timer');
+arena.appendChild(createTimer);
+
+let timer = document.getElementById('timer');
+timer.innerHTML = '10';
+
+
+let x = 1
+
+timer.style.visibility = 'visible';
+timer.style.opacity = '1';
+timer.style.fontSize = '102px';
+
+setTimeout(function() {
+    timer.style.visibility = 'hidden';
+    timer.style.opacity = '0';
+    timer.style.fontSize = '76px';
+}, 600);
+
+setInterval(function() {
+    timer.style.visibility = 'visible';
+    timer.style.opacity = '1';
+    timer.style.fontSize = '102px';
+
+    timer.innerHTML = '10' - x;
+
+    setTimeout(function() {
+        timer.style.visibility = 'hidden';
+        timer.style.opacity = '0';
+        timer.style.fontSize = '76px';
+    }, 600);
+
+    if (timer.innerHTML === '-1') {
+        timer.innerHTML = '10'
+        x = 0;
+    }
+    x++
+}, 1000);
 
 // Player Status Box!
 let player = document.getElementsByClassName('player')[0];
@@ -103,42 +159,21 @@ let monsterTextStatus = document.getElementById('monster-text-status');
 monsterTextStatus.innerHTML = 'Zombie attack damage: 111 dmg!';
 
 
+// Create Ninja Avatar!
 let createPlayerAvatar = document.createElement('div');
 createPlayerAvatar.setAttribute('class', 'player-avatar');
 player.appendChild(createPlayerAvatar);
 
 let playerAvatarBox = document.getElementsByClassName('player-avatar')[0];
 let createPlayerAvatarImage = document.createElement('img');
-createPlayerAvatarImage.setAttribute('id', 'player-avatar-image');
+createPlayerAvatarImage.setAttribute('id', 'player-avatar-idle');
 playerAvatarBox.appendChild(createPlayerAvatarImage);
 
-let playerAvatarImage = document.getElementById('player-avatar-image');
-
-function ninjaIdle() {
-    z = (z === ninjaIdleImages.length - 1) ? 0 : z + 1;
-    playerAvatarImage.src = ninjaIdleImages[z];
-}
-
-let ninjaIdleImages = [
-        "asset/img/character/ninja/male/Idle__000.png",
-        "asset/img/character/ninja/male/Idle__001.png",
-        "asset/img/character/ninja/male/Idle__002.png",
-        "asset/img/character/ninja/male/Idle__003.png",
-        "asset/img/character/ninja/male/Idle__004.png",
-        "asset/img/character/ninja/male/Idle__005.png",
-        "asset/img/character/ninja/male/Idle__006.png",
-        "asset/img/character/ninja/male/Idle__007.png",
-        "asset/img/character/ninja/male/Idle__008.png",
-        "asset/img/character/ninja/male/Idle__009.png"
-    ],
-    z = -1;
-
-function startNinjaIdle() {
-    setInterval(ninjaIdle, 80);
-}
-startNinjaIdle();
+let playerAvatarIdle = document.getElementById('player-avatar-idle');
+playerAvatarIdle.src = "asset/img/character/gif/ninja_male_idle.gif";
 
 
+// Create Zombie Avatar!
 let createMonsterAvatar = document.createElement('div');
 createMonsterAvatar.setAttribute('class', 'monster-avatar');
 monster.appendChild(createMonsterAvatar);
@@ -149,38 +184,31 @@ createMonsterAvatarImage.setAttribute('id', 'monster-avatar-image');
 monsterAvatarBox.appendChild(createMonsterAvatarImage);
 
 let monsterAvatarImage = document.getElementById('monster-avatar-image');
-
-function zombieIdle() {
-    y = (y === zombieIdleImages.length - 1) ? 0 : y + 1;
-    monsterAvatarImage.src = zombieIdleImages[y];
-}
-
-let zombieIdleImages = [
-        "asset/img/character/zombie/male/Idle (1).png",
-        "asset/img/character/zombie/male/Idle (2).png",
-        "asset/img/character/zombie/male/Idle (3).png",
-        "asset/img/character/zombie/male/Idle (4).png",
-        "asset/img/character/zombie/male/Idle (5).png",
-        "asset/img/character/zombie/male/Idle (6).png",
-        "asset/img/character/zombie/male/Idle (7).png",
-        "asset/img/character/zombie/male/Idle (8).png",
-        "asset/img/character/zombie/male/Idle (9).png",
-        "asset/img/character/zombie/male/Idle (10).png",
-        "asset/img/character/zombie/male/Idle (11).png",
-        "asset/img/character/zombie/male/Idle (12).png",
-        "asset/img/character/zombie/male/Idle (13).png",
-        "asset/img/character/zombie/male/Idle (14).png",
-        "asset/img/character/zombie/male/Idle (15).png",
-    ],
-    y = -1;
-
-function startZombieIdle() {
-    setInterval(zombieIdle, 60);
-}
-startZombieIdle();
+monsterAvatarImage.src = "asset/img/character/gif/zombie_male_idle.gif";
 
 
+// Create Player Hit Damage Box
+let createPlayerHitDamageBox = document.createElement('div');
+createPlayerHitDamageBox.setAttribute('id', 'player-hit-damage-box');
+player.appendChild(createPlayerHitDamageBox);
 
+let createMonsterHitDamageBox = document.createElement('div');
+createMonsterHitDamageBox.setAttribute('id', 'monster-hit-damage-box');
+monster.appendChild(createMonsterHitDamageBox);
+
+let playerHitDamageBox = document.getElementById('player-hit-damage-box');
+let monsterHitDamageBox = document.getElementById('monster-hit-damage-box');
+
+let createHitDamageParagraph = document.createElement('p');
+createHitDamageParagraph.setAttribute('id', 'player-hit-damage');
+playerHitDamageBox.appendChild(createHitDamageParagraph);
+
+createHitDamageParagraph = document.createElement('p');
+createHitDamageParagraph.setAttribute('id', 'monster-hit-damage');
+monsterHitDamageBox.appendChild(createHitDamageParagraph);
+
+let playerHitDamage = document.getElementById('player-hit-damage');
+let monsterHitDamage = document.getElementById('monster-hit-damage');
 
 // Create Answer Box & Answer Buttons!
 let createAnswerButton = document.createElement('div');
@@ -223,6 +251,9 @@ answerButton3.appendChild(createAnswerButton3Text);
 let createAnswerButton4Text = document.createTextNode('180');
 answerButton4.appendChild(createAnswerButton4Text);
 
+monsterHitDamage.innerHTML = '0 dmg!';
+playerHitDamage.innerHTML = '0 dmg!';
+
 answerButton1.addEventListener('click', function(e) {
     answerButton1.style.backgroundColor = 'rgb(189, 60, 60)';
     answerButton4.style.backgroundColor = 'rgb(66, 131, 63)';
@@ -237,6 +268,33 @@ answerButton1.addEventListener('click', function(e) {
     gameButton[2].style.cursor = 'wait';
     gameButton[3].style.cursor = 'wait';
 
+    playerHitDamage.style.visibility = 'visible';
+    playerHitDamage.style.opacity = '1';
+    playerHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.style.visibility = 'visible';
+    monsterHitDamage.style.opacity = '1';
+    monsterHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.innerHTML = '120 dmg!';
+    playerHitDamage.innerHTML = '150 dmg!';
+
+    setTimeout(function() {
+        playerHitDamage.style.visibility = 'hidden';
+        playerHitDamage.style.opacity = '0';
+
+        monsterHitDamage.style.visibility = 'hidden';
+        monsterHitDamage.style.opacity = '0';
+    }, 1000);
+
+    setTimeout(function() {
+        playerHitDamage.style.bottom = '5px';
+        playerHitDamage.innerHTML = '';
+
+        monsterHitDamage.style.bottom = '5px';
+        monsterHitDamage.innerHTML = '';
+    }, 1400);
+
     setTimeout(function() {
         answerButton1.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
         answerButton4.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
@@ -250,6 +308,7 @@ answerButton1.addEventListener('click', function(e) {
         gameButton[1].style.cursor = 'pointer';
         gameButton[2].style.cursor = 'pointer';
         gameButton[3].style.cursor = 'pointer';
+
     }, 1500);
 });
 
@@ -267,6 +326,33 @@ answerButton2.addEventListener('click', function(e) {
     gameButton[1].style.cursor = 'wait';
     gameButton[2].style.cursor = 'wait';
     gameButton[3].style.cursor = 'wait';
+
+    playerHitDamage.style.visibility = 'visible';
+    playerHitDamage.style.opacity = '1';
+    playerHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.style.visibility = 'visible';
+    monsterHitDamage.style.opacity = '1';
+    monsterHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.innerHTML = '80 dmg!';
+    playerHitDamage.innerHTML = '180 dmg!';
+
+    setTimeout(function() {
+        playerHitDamage.style.visibility = 'hidden';
+        playerHitDamage.style.opacity = '0';
+
+        monsterHitDamage.style.visibility = 'hidden';
+        monsterHitDamage.style.opacity = '0';
+    }, 1000);
+
+    setTimeout(function() {
+        playerHitDamage.style.bottom = '5px';
+        playerHitDamage.innerHTML = '';
+
+        monsterHitDamage.style.bottom = '5px';
+        monsterHitDamage.innerHTML = '';
+    }, 1400);
 
     setTimeout(function() {
         answerButton2.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
@@ -298,6 +384,33 @@ answerButton3.addEventListener('click', function(e) {
     gameButton[2].style.cursor = 'wait';
     gameButton[3].style.cursor = 'wait';
 
+    playerHitDamage.style.visibility = 'visible';
+    playerHitDamage.style.opacity = '1';
+    playerHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.style.visibility = 'visible';
+    monsterHitDamage.style.opacity = '1';
+    monsterHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.innerHTML = '60 dmg!';
+    playerHitDamage.innerHTML = '195 dmg!';
+
+    setTimeout(function() {
+        playerHitDamage.style.visibility = 'hidden';
+        playerHitDamage.style.opacity = '0';
+
+        monsterHitDamage.style.visibility = 'hidden';
+        monsterHitDamage.style.opacity = '0';
+    }, 1000);
+
+    setTimeout(function() {
+        playerHitDamage.style.bottom = '5px';
+        playerHitDamage.innerHTML = '';
+
+        monsterHitDamage.style.bottom = '5px';
+        monsterHitDamage.innerHTML = '';
+    }, 1400);
+
     setTimeout(function() {
         answerButton3.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
         answerButton4.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
@@ -327,6 +440,33 @@ answerButton4.addEventListener('click', function(e) {
     gameButton[1].style.cursor = 'wait';
     gameButton[2].style.cursor = 'wait';
     gameButton[3].style.cursor = 'wait';
+
+    playerHitDamage.style.visibility = 'visible';
+    playerHitDamage.style.opacity = '1';
+    playerHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.style.visibility = 'visible';
+    monsterHitDamage.style.opacity = '1';
+    monsterHitDamage.style.bottom = '40px';
+
+    monsterHitDamage.innerHTML = '220 dmg!';
+    playerHitDamage.innerHTML = '';
+
+    setTimeout(function() {
+        playerHitDamage.style.visibility = 'hidden';
+        playerHitDamage.style.opacity = '0';
+
+        monsterHitDamage.style.visibility = 'hidden';
+        monsterHitDamage.style.opacity = '0';
+    }, 1000);
+
+    setTimeout(function() {
+        playerHitDamage.style.bottom = '5px';
+        playerHitDamage.innerHTML = '';
+
+        monsterHitDamage.style.bottom = '5px';
+        monsterHitDamage.innerHTML = '';
+    }, 1400);
 
     setTimeout(function() {
         answerButton4.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
