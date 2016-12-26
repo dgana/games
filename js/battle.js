@@ -90,7 +90,7 @@ let playerStatus = document.getElementsByClassName('player-status')[0];
 let createPlayerName = document.createElement('p');
 createPlayerName.setAttribute('id', 'player-name');
 playerStatus.appendChild(createPlayerName);
-let createPlayerNameText = document.createTextNode('Male Ninja');
+let createPlayerNameText = document.createTextNode('Goemon');
 createPlayerName.appendChild(createPlayerNameText);
 
 let createPlayerHealthBar = document.createElement('progress');
