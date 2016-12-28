@@ -3,6 +3,77 @@
 let battle = document.getElementById('battle');
 
 battle.className = 'background-arena1';
+        
+var enPlayer     = 700;
+var enMonster    = 1000;
+var enPlayerText = enPlayer;
+var enMonsterText = enMonster;
+var barPlayer = enPlayer;
+var barMonster = enMonster;
+arrSoal = [];
+for(let i=0 ; i<10 ; i++){
+    arrSoal.push([]);
+    let x = Math.floor((Math.random() * 100) + 33)
+    let y = Math.floor((Math.random() * 100) + 33)
+    let z = x+y;
+    pilihan1 = z+10;
+    pilihan2 = z-10;
+    pilihan3 = z+5;
+    if(z % 2 === 0){
+        pilihan1 = z+20;
+        pilihan2 = z-10;
+        pilihan3 = z+15;
+    };
+    if(z % 3 === 0){
+        pilihan1 = z-20;
+        pilihan2 = z+10;
+        pilihan3 = z-5;
+    };  
+    arrSoal[i].push(x+' + '+y);
+    arrSoal[i].push(z.toString());
+    arrSoal[i].push(z.toString());
+    arrSoal[i].push(pilihan3);
+    arrSoal[i].push(pilihan1);
+    arrSoal[i].push(pilihan2);
+};          
+
+for(let i=10 ; i<20 ; i++){
+    arrSoal.push([]);
+    let x = Math.floor((Math.random() * 300) + 3)
+    let y = Math.floor((Math.random() * 300) + 3)
+    let z = x-y;
+    pilihan1 = z+10;
+    pilihan2 = z-10;
+    pilihan3 = z+5;
+    if(z % 2 === 0){
+        pilihan1 = z-20;
+        pilihan2 = z+10;
+        pilihan3 = z-5;
+    };
+    if(z % 3 === 0){
+        pilihan1 = z+20;
+        pilihan2 = z-10;
+        pilihan3 = z+15;
+    };  
+    arrSoal[i].push(x+' - '+y);
+    arrSoal[i].push(z.toString());
+    arrSoal[i].push(z.toString());
+    arrSoal[i].push(pilihan3);
+    arrSoal[i].push(pilihan1);
+    arrSoal[i].push(pilihan2);
+};
+function acak(array) {
+    var m = array.length, t, i;
+    while (m) {
+        i = Math.floor(Math.random() * m--);
+        t = array[m];
+        array[m] = array[i];
+        array[i] = t;
+    }
+    return array;
+};
+
+arrSoal = acak(arrSoal);
 
 let createBattle = document.createElement('div');
 createBattle.setAttribute('class', 'arena');
@@ -23,7 +94,7 @@ createQuestion.setAttribute('id', 'question');
 arena.appendChild(createQuestion);
 
 let question = document.getElementById('question');
-question.innerHTML = '100 + 80 = ?';
+question.innerHTML = arrSoal[0][0];
 
 
 setTimeout(function() {
@@ -37,35 +108,21 @@ setInterval(function() {
     }, 1000);
 }, 2000);
 
-
-
 // Create Timer Box!
 let createTimer = document.createElement('div');
 createTimer.setAttribute('id', 'timer');
 arena.appendChild(createTimer);
 
-let timer = document.getElementById('timer');
-timer.innerHTML = '10';
+function hitungWaktu(){
 
+    let timer = document.getElementById('timer');
+    timer.innerHTML = '10';
 
-let x = 1
+    let x = 1
 
-timer.style.visibility = 'visible';
-timer.style.opacity = '1';
-timer.style.fontSize = '102px';
-
-setTimeout(function() {
-    timer.style.visibility = 'hidden';
-    timer.style.opacity = '0';
-    timer.style.fontSize = '76px';
-}, 600);
-
-setInterval(function() {
     timer.style.visibility = 'visible';
     timer.style.opacity = '1';
     timer.style.fontSize = '102px';
-
-    timer.innerHTML = '10' - x;
 
     setTimeout(function() {
         timer.style.visibility = 'hidden';
@@ -73,13 +130,27 @@ setInterval(function() {
         timer.style.fontSize = '76px';
     }, 600);
 
-    if (timer.innerHTML === '-1') {
-        timer.innerHTML = '10'
-        x = 0;
-    }
-    x++
-}, 1000);
+    hentikanWaktu = setInterval(function() {
+        timer.style.visibility = 'visible';
+        timer.style.opacity = '1';
+        timer.style.fontSize = '102px';
 
+        timer.innerHTML = '10' - x;
+
+        setTimeout(function() {
+            timer.style.visibility = 'hidden';
+            timer.style.opacity = '0';
+            timer.style.fontSize = '76px';
+        }, 600);
+
+        if (timer.innerHTML === '0') {
+            timer.innerHTML = '10'
+            x = 0;
+        }
+        x++
+    }, 1000);
+};
+hitungWaktu();
 // Player Status Box!
 let player = document.getElementsByClassName('player')[0];
 let createPlayerStatus = document.createElement('div');
@@ -94,8 +165,8 @@ let createPlayerNameText = document.createTextNode('Goemon');
 createPlayerName.appendChild(createPlayerNameText);
 
 let createPlayerHealthBar = document.createElement('progress');
-createPlayerHealthBar.setAttribute('max', 100);
-createPlayerHealthBar.setAttribute('value', 90);
+createPlayerHealthBar.setAttribute('max', enPlayerText);
+createPlayerHealthBar.setAttribute('value', barPlayer);
 createPlayerHealthBar.setAttribute('id', 'player-health-bar');
 playerStatus.appendChild(createPlayerHealthBar);
 
@@ -104,22 +175,6 @@ createPlayerHealthStatus.setAttribute('id', 'player-health-status');
 playerStatus.appendChild(createPlayerHealthStatus);
 let createPlayerHealthStatusText = document.createTextNode(1000 + ' / ' + 1000)
 createPlayerHealthStatus.appendChild(createPlayerHealthStatusText);
-
-let createPlayerTextBox = document.createElement('div');
-createPlayerTextBox.setAttribute('class', 'player-text-box');
-playerStatus.appendChild(createPlayerTextBox);
-
-let playerTextBox = document.getElementsByClassName('player-text-box')[0];
-let createPlayerTextParagraph = document.createElement('p');
-createPlayerTextParagraph.setAttribute('id', 'player-text-status');
-playerTextBox.appendChild(createPlayerTextParagraph);
-
-let playerTextStatus = document.getElementById('player-text-status');
-playerTextStatus.innerHTML = 'Ninja attack damage: 151 dmg!';
-
-
-
-
 
 // Monster Status Box!
 let monster = document.getElementsByClassName('monster')[0];
@@ -135,8 +190,8 @@ let createMonsterNameText = document.createTextNode('Zombie')
 createMonsterName.appendChild(createMonsterNameText);
 
 let createMonsterHealthBar = document.createElement('progress');
-createMonsterHealthBar.setAttribute('max', 100);
-createMonsterHealthBar.setAttribute('value', 80);
+createMonsterHealthBar.setAttribute('max', enMonsterText);
+createMonsterHealthBar.setAttribute('value', barMonster);
 createMonsterHealthBar.setAttribute('id', 'monster-health-bar');
 monsterStatus.appendChild(createMonsterHealthBar);
 
@@ -145,19 +200,6 @@ createMonsterHealthStatus.setAttribute('id', 'monster-health-status');
 monsterStatus.appendChild(createMonsterHealthStatus);
 let createMonsterHealthStatusText = document.createTextNode(1000 + ' / ' + 1000)
 createMonsterHealthStatus.appendChild(createMonsterHealthStatusText);
-
-let createMonsterTextBox = document.createElement('div');
-createMonsterTextBox.setAttribute('class', 'monster-text-box');
-monsterStatus.appendChild(createMonsterTextBox);
-
-let monsterTextBox = document.getElementsByClassName('monster-text-box')[0];
-let createMonsterTextParagraph = document.createElement('p');
-createMonsterTextParagraph.setAttribute('id', 'monster-text-status');
-monsterTextBox.appendChild(createMonsterTextParagraph);
-
-let monsterTextStatus = document.getElementById('monster-text-status');
-monsterTextStatus.innerHTML = 'Zombie attack damage: 111 dmg!';
-
 
 // Create Ninja Avatar!
 let createPlayerAvatar = document.createElement('div');
@@ -171,7 +213,6 @@ playerAvatarBox.appendChild(createPlayerAvatarImage);
 
 let playerAvatarIdle = document.getElementById('player-avatar-idle');
 playerAvatarIdle.src = "asset/img/character/gif/ninja_male_idle.gif"
-
 
 // Create Zombie Avatar!
 let createMonsterAvatar = document.createElement('div');
@@ -243,25 +284,13 @@ createAnswerButton.setAttribute('class', 'answer-button');
 arena.appendChild(createAnswerButton);
 
 let answerButton = document.getElementsByClassName('answer-button')[0];
-let createGameButton = document.createElement('button');
-createGameButton.setAttribute('class', 'game-button');
-createGameButton.setAttribute('id', 'answer-button-1');
-answerButton.appendChild(createGameButton);
 
-createGameButton = document.createElement('button');
-createGameButton.setAttribute('class', 'game-button');
-createGameButton.setAttribute('id', 'answer-button-2');
-answerButton.appendChild(createGameButton);
-
-createGameButton = document.createElement('button');
-createGameButton.setAttribute('class', 'game-button');
-createGameButton.setAttribute('id', 'answer-button-3');
-answerButton.appendChild(createGameButton);
-
-createGameButton = document.createElement('button');
-createGameButton.setAttribute('class', 'game-button');
-createGameButton.setAttribute('id', 'answer-button-4');
-answerButton.appendChild(createGameButton);
+for(let i=1 ; i<5 ; i++){
+    createGameButton = document.createElement('button');
+    createGameButton.setAttribute('class', 'game-button');
+    createGameButton.setAttribute('id', 'answer-button-'+i);
+    answerButton.appendChild(createGameButton);
+}
 
 let gameButton = document.getElementsByClassName('game-button');
 let answerButton1 = document.getElementById('answer-button-1');
@@ -269,244 +298,179 @@ let answerButton2 = document.getElementById('answer-button-2');
 let answerButton3 = document.getElementById('answer-button-3');
 let answerButton4 = document.getElementById('answer-button-4');
 
-let createAnswerButton1Text = document.createTextNode('78');
-answerButton1.appendChild(createAnswerButton1Text);
-let createAnswerButton2Text = document.createTextNode('280');
-answerButton2.appendChild(createAnswerButton2Text);
-let createAnswerButton3Text = document.createTextNode('172');
-answerButton3.appendChild(createAnswerButton3Text);
-let createAnswerButton4Text = document.createTextNode('180');
-answerButton4.appendChild(createAnswerButton4Text);
+function soalAwal(){
 
-monsterHitDamage.innerHTML = '0 dmg!';
-playerHitDamage.innerHTML = '0 dmg!';
+    document.getElementById('player-health-status').innerHTML = enPlayerText+' / '+enPlayer;
+    document.getElementById('monster-health-status').innerHTML = enMonsterText+' / '+enMonster;
+    for(let i=0 ; i<4 ; i++){
+        let x = i+1;
+        document.getElementById('answer-button-'+x).innerHTML=arrSoal[0][i+2];
+    };
+    soalInti();
+};
 
-answerButton1.addEventListener('click', function(e) {
-    answerButton1.style.backgroundColor = 'rgb(189, 60, 60)';
-    answerButton4.style.backgroundColor = 'rgb(66, 131, 63)';
+function soalInti(){
+    let i=0;            
+    function lanjut(){
+        document.getElementById('question').innerHTML=arrSoal[i+1][0];
+        var tam1, tam2, tam3, tam4;
+        function calculate() {
+            do {
+                tam1 = Math.floor((Math.random() * 4));
+                tam2 = Math.floor((Math.random() * 4));
+                tam3 = Math.floor((Math.random() * 4));
+                tam4 = Math.floor((Math.random() * 4));
+            }  
+            while (tam1 == tam2 || tam1 == tam3 || tam1 == tam4 || tam2 == tam3 || tam2 == tam4 || tam3 == tam4);  
+        }
+        calculate();
 
-    gameButton[0].setAttribute('disabled', 'disabled');
-    gameButton[1].setAttribute('disabled', 'disabled');
-    gameButton[2].setAttribute('disabled', 'disabled');
-    gameButton[3].setAttribute('disabled', 'disabled');
+        document.getElementById('player-health-status').innerHTML = enPlayerText+' / '+enPlayer;
+        document.getElementById('monster-health-status').innerHTML = enMonsterText+' / '+enMonster;
+        document.getElementById('player-health-bar').value = barPlayer;
+        document.getElementById('player-health-bar').style.color = 'red';
+        document.getElementById('monster-health-bar').value = barMonster;
+        document.getElementById('answer-button-1').innerHTML=arrSoal[i+1][tam1+2];
+        document.getElementById('answer-button-2').innerHTML=arrSoal[i+1][tam2+2];
+        document.getElementById('answer-button-3').innerHTML=arrSoal[i+1][tam3+2];
+        document.getElementById('answer-button-4').innerHTML=arrSoal[i+1][tam4+2];
+        if(i<arrSoal.length-1){
+            i++;
+        };
+        hentiTimeout = setTimeout(function(){
+                phit = Math.floor((Math.random() * 100) + 30)
+                console.log('Mons+er defense '+phit);
+                enPlayer = enPlayer-phit;
+                barPlayer = barPlayer-phit;
 
-    gameButton[0].style.cursor = 'wait';
-    gameButton[1].style.cursor = 'wait';
-    gameButton[2].style.cursor = 'wait';
-    gameButton[3].style.cursor = 'wait';
+                for(let j=0 ; j<4 ; j++){
+                    if (arrSoal[i][1] === document.getElementById('answer-button-'+[j+1]).innerHTML){
+                        document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(66, 131, 63)';
+                    }                       
+                    gameButton[j].setAttribute('disabled', 'disabled');
+                    gameButton[j].style.cursor = 'wait';
+                }
 
-    playerHitDamage.style.visibility = 'visible';
-    playerHitDamage.style.opacity = '1';
-    playerHitDamage.style.bottom = '40px';
+                playerHitDamage.style.visibility = 'visible';
+                playerHitDamage.style.opacity = '1';
+                playerHitDamage.style.bottom = '40px';
 
-    monsterHitDamage.style.visibility = 'visible';
-    monsterHitDamage.style.opacity = '1';
-    monsterHitDamage.style.bottom = '40px';
+                playerHitDamage.innerHTML = phit+' dmg!';   
+                
+                setTimeout(function() {
+                    playerHitDamage.style.visibility = 'hidden';
+                    playerHitDamage.style.opacity = '0';
 
-    monsterHitDamage.innerHTML = '120 dmg!';
-    playerHitDamage.innerHTML = '150 dmg!';
+                }, 1000);
 
-    setTimeout(function() {
-        playerHitDamage.style.visibility = 'hidden';
-        playerHitDamage.style.opacity = '0';
+                setTimeout(function() {
+                    playerHitDamage.style.bottom = '5px';
+                    playerHitDamage.innerHTML = '';
 
-        monsterHitDamage.style.visibility = 'hidden';
-        monsterHitDamage.style.opacity = '0';
-    }, 1000);
+                }, 1400);
 
-    setTimeout(function() {
-        playerHitDamage.style.bottom = '5px';
-        playerHitDamage.innerHTML = '';
+                setTimeout(function() {
 
-        monsterHitDamage.style.bottom = '5px';
-        monsterHitDamage.innerHTML = '';
-    }, 1400);
+                    for(let j=0 ; j<4 ; j++){
+                        document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
+                        gameButton[j].removeAttribute('disabled');
+                        gameButton[j].style.cursor = 'pointer';
+                    }
 
-    setTimeout(function() {
-        answerButton1.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
-        answerButton4.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
+                }, 1500);               
+                if(enMonster<=0 || enPlayer<=0){
+                    clearTimeout(hentiTimeout); 
+                    clearInterval(hentikanWaktu);
+                    battle.removeChild(createBattle);
+                    alert('GAME OVER');
+                };
 
-        gameButton[0].removeAttribute('disabled');
-        gameButton[1].removeAttribute('disabled');
-        gameButton[2].removeAttribute('disabled');
-        gameButton[3].removeAttribute('disabled');
+                lanjut();
+        }, 10000);              
+    };
+    lanjut();
 
-        gameButton[0].style.cursor = 'pointer';
-        gameButton[1].style.cursor = 'pointer';
-        gameButton[2].style.cursor = 'pointer';
-        gameButton[3].style.cursor = 'pointer';
+    for(let j=0 ; j<4 ; j++){
+        document.getElementById('answer-button-'+[j+1]).addEventListener('click', function() {
+            clearTimeout(hentiTimeout); 
+            clearInterval(hentikanWaktu);       
 
-    }, 1500);
-});
+            let jawab = [0,1,2,3];
+            jawab[j] = document.getElementById('answer-button-'+[j+1]).innerHTML;
+            if(jawab[j] === arrSoal[i][1]){
+                var mhit = Math.floor((Math.random() * 100) + 30)
+                console.log('Power hit '+mhit);
+                enMonster = enMonster-mhit;                 
+                barMonster = barMonster-mhit;
+            }
+            else{
+                document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(189, 60, 60)';
+                var phit = Math.floor((Math.random() * 100) + 30)
+                console.log('Mons+er defense '+phit);
+                enPlayer = enPlayer-phit;                       
+                barPlayer = barPlayer-phit;
+            }
 
+            for(let j=0 ; j<4 ; j++){
+                if (arrSoal[i][1] === document.getElementById('answer-button-'+[j+1]).innerHTML){
+                    document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(66, 131, 63)';
+                }                       
+                gameButton[j].setAttribute('disabled', 'disabled');
+                gameButton[j].style.cursor = 'wait';
+            }
 
-answerButton2.addEventListener('click', function(e) {
-    answerButton2.style.backgroundColor = 'rgb(189, 60, 60)';
-    answerButton4.style.backgroundColor = 'rgb(66, 131, 63)';
+            playerHitDamage.style.visibility = 'visible';
+            playerHitDamage.style.opacity = '1';
+            playerHitDamage.style.bottom = '40px';
 
-    gameButton[0].setAttribute('disabled', 'disabled');
-    gameButton[1].setAttribute('disabled', 'disabled');
-    gameButton[2].setAttribute('disabled', 'disabled');
-    gameButton[3].setAttribute('disabled', 'disabled');
+            monsterHitDamage.style.visibility = 'visible';
+            monsterHitDamage.style.opacity = '1';
+            monsterHitDamage.style.bottom = '40px';
 
-    gameButton[0].style.cursor = 'wait';
-    gameButton[1].style.cursor = 'wait';
-    gameButton[2].style.cursor = 'wait';
-    gameButton[3].style.cursor = 'wait';
+            if(mhit>0){
+                monsterHitDamage.innerHTML = mhit+' dmg!';
+            };
+            if(phit>0){
+                playerHitDamage.innerHTML = phit+' dmg!';   
+            };
+            
+            setTimeout(function() {
+                playerHitDamage.style.visibility = 'hidden';
+                playerHitDamage.style.opacity = '0';
 
-    playerHitDamage.style.visibility = 'visible';
-    playerHitDamage.style.opacity = '1';
-    playerHitDamage.style.bottom = '40px';
+                monsterHitDamage.style.visibility = 'hidden';
+                monsterHitDamage.style.opacity = '0';
+            }, 1000);
 
-    monsterHitDamage.style.visibility = 'visible';
-    monsterHitDamage.style.opacity = '1';
-    monsterHitDamage.style.bottom = '40px';
+            setTimeout(function() {
+                playerHitDamage.style.bottom = '5px';
+                playerHitDamage.innerHTML = '';
 
-    monsterHitDamage.innerHTML = '80 dmg!';
-    playerHitDamage.innerHTML = '180 dmg!';
+                monsterHitDamage.style.bottom = '5px';
+                monsterHitDamage.innerHTML = '';
+            }, 1400);
 
-    setTimeout(function() {
-        playerHitDamage.style.visibility = 'hidden';
-        playerHitDamage.style.opacity = '0';
+            setTimeout(function() {
 
-        monsterHitDamage.style.visibility = 'hidden';
-        monsterHitDamage.style.opacity = '0';
-    }, 1000);
+                for(let j=0 ; j<4 ; j++){
+                    document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
+                    gameButton[j].removeAttribute('disabled');
+                    gameButton[j].style.cursor = 'pointer';
+                }
 
-    setTimeout(function() {
-        playerHitDamage.style.bottom = '5px';
-        playerHitDamage.innerHTML = '';
+                lanjut();
+                hitungWaktu();
+            }, 1500);
 
-        monsterHitDamage.style.bottom = '5px';
-        monsterHitDamage.innerHTML = '';
-    }, 1400);
+            if(enMonster<=0 || enPlayer<=0){
+                clearTimeout(hentiTimeout); 
+                clearInterval(hentikanWaktu);
+                battle.removeChild(createBattle);
+                alert('GAME OVER');
+            };
+        });
+    };
+};
 
-    setTimeout(function() {
-        answerButton2.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
-        answerButton4.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
-
-        gameButton[0].removeAttribute('disabled');
-        gameButton[1].removeAttribute('disabled');
-        gameButton[2].removeAttribute('disabled');
-        gameButton[3].removeAttribute('disabled');
-
-        gameButton[0].style.cursor = 'pointer';
-        gameButton[1].style.cursor = 'pointer';
-        gameButton[2].style.cursor = 'pointer';
-        gameButton[3].style.cursor = 'pointer';
-    }, 1500);
-});
-
-answerButton3.addEventListener('click', function(e) {
-    answerButton3.style.backgroundColor = 'rgb(189, 60, 60)';
-    answerButton4.style.backgroundColor = 'rgb(66, 131, 63)';
-
-    gameButton[0].setAttribute('disabled', 'disabled');
-    gameButton[1].setAttribute('disabled', 'disabled');
-    gameButton[2].setAttribute('disabled', 'disabled');
-    gameButton[3].setAttribute('disabled', 'disabled');
-
-    gameButton[0].style.cursor = 'wait';
-    gameButton[1].style.cursor = 'wait';
-    gameButton[2].style.cursor = 'wait';
-    gameButton[3].style.cursor = 'wait';
-
-    playerHitDamage.style.visibility = 'visible';
-    playerHitDamage.style.opacity = '1';
-    playerHitDamage.style.bottom = '40px';
-
-    monsterHitDamage.style.visibility = 'visible';
-    monsterHitDamage.style.opacity = '1';
-    monsterHitDamage.style.bottom = '40px';
-
-    monsterHitDamage.innerHTML = '60 dmg!';
-    playerHitDamage.innerHTML = '195 dmg!';
-
-    setTimeout(function() {
-        playerHitDamage.style.visibility = 'hidden';
-        playerHitDamage.style.opacity = '0';
-
-        monsterHitDamage.style.visibility = 'hidden';
-        monsterHitDamage.style.opacity = '0';
-    }, 1000);
-
-    setTimeout(function() {
-        playerHitDamage.style.bottom = '5px';
-        playerHitDamage.innerHTML = '';
-
-        monsterHitDamage.style.bottom = '5px';
-        monsterHitDamage.innerHTML = '';
-    }, 1400);
-
-    setTimeout(function() {
-        answerButton3.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
-        answerButton4.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
-        answerButton.setAttribute('disabled', 'false');
-
-        gameButton[0].removeAttribute('disabled');
-        gameButton[1].removeAttribute('disabled');
-        gameButton[2].removeAttribute('disabled');
-        gameButton[3].removeAttribute('disabled');
-
-        gameButton[0].style.cursor = 'pointer';
-        gameButton[1].style.cursor = 'pointer';
-        gameButton[2].style.cursor = 'pointer';
-        gameButton[3].style.cursor = 'pointer';
-    }, 1500);
-});
-
-answerButton4.addEventListener('click', function(e) {
-    answerButton4.style.backgroundColor = 'rgb(66, 131, 63)';
-
-    gameButton[0].setAttribute('disabled', 'disabled');
-    gameButton[1].setAttribute('disabled', 'disabled');
-    gameButton[2].setAttribute('disabled', 'disabled');
-    gameButton[3].setAttribute('disabled', 'disabled');
-
-    gameButton[0].style.cursor = 'wait';
-    gameButton[1].style.cursor = 'wait';
-    gameButton[2].style.cursor = 'wait';
-    gameButton[3].style.cursor = 'wait';
-
-    playerHitDamage.style.visibility = 'visible';
-    playerHitDamage.style.opacity = '1';
-    playerHitDamage.style.bottom = '40px';
-
-    monsterHitDamage.style.visibility = 'visible';
-    monsterHitDamage.style.opacity = '1';
-    monsterHitDamage.style.bottom = '40px';
-
-    monsterHitDamage.innerHTML = '220 dmg!';
-    playerHitDamage.innerHTML = '';
-
-    setTimeout(function() {
-        playerHitDamage.style.visibility = 'hidden';
-        playerHitDamage.style.opacity = '0';
-
-        monsterHitDamage.style.visibility = 'hidden';
-        monsterHitDamage.style.opacity = '0';
-    }, 1000);
-
-    setTimeout(function() {
-        playerHitDamage.style.bottom = '5px';
-        playerHitDamage.innerHTML = '';
-
-        monsterHitDamage.style.bottom = '5px';
-        monsterHitDamage.innerHTML = '';
-    }, 1400);
-
-    setTimeout(function() {
-        answerButton4.style.backgroundColor = 'rgba(167, 167, 167, 0.8)';
-        answerButton.setAttribute('disabled', 'false');
-
-        gameButton[0].removeAttribute('disabled');
-        gameButton[1].removeAttribute('disabled');
-        gameButton[2].removeAttribute('disabled');
-        gameButton[3].removeAttribute('disabled');
-
-        gameButton[0].style.cursor = 'pointer';
-        gameButton[1].style.cursor = 'pointer';
-        gameButton[2].style.cursor = 'pointer';
-        gameButton[3].style.cursor = 'pointer';
-    }, 1500);
-});
+//MULAI GAMEEEEEEEE!
+soalAwal();
