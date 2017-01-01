@@ -4,19 +4,20 @@ let intro_m = document.getElementById("intro");
 let battle_m = document.getElementById("battle");
 let map_m = document.getElementById("map");
 
-let level1 = document.getElementById("level1");
-let level2 = document.getElementById("level2");
-let level3 = document.getElementById("level3");
-let level4 = document.getElementById("level4");
-let level5 = document.getElementById("level5");
-let level6 = document.getElementById("level6");
-let level7 = document.getElementById("level7");
+let level1_m = document.getElementById("level1");
+let level2_m = document.getElementById("level2");
+let level3_m = document.getElementById("level3");
+let level4_m = document.getElementById("level4");
+let level5_m = document.getElementById("level5");
+let level6_m = document.getElementById("level6");
+let level7_m = document.getElementById("level7");
 
 map_m.setAttribute("class", "general-background map");
 
 // Init none
 battle_m.style.display = "none";
 map_m.style.display = "none";
+intro_i.style.display = "block";
 
 // Buttons
 var level1Btn = document.createElement("img");
@@ -37,6 +38,6 @@ level2Btn.style.opacity = 1;
 level1Btn.addEventListener("click", function () {
   intro_m.style.display = "none";
   map_m.style.display = "none";
+  battle.style.display = "block";
   level1.style.display = "block";
 });
-

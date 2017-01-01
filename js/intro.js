@@ -7,6 +7,7 @@ let map_i = document.getElementById("map");
 intro_i.setAttribute("class", "general-background opening");
 
 // Init none
+intro_i.style.display = "block";
 battle_i.style.display = "none";
 map_i.style.display = "none";
 
