@@ -21,7 +21,7 @@ let level6 = document.getElementById('level6');
 let level7 = document.getElementById('level7');
 
 
-var enPlayer     = 10;
+var enPlayer     = 1000;
 var enMonster    = 1000;
 var enPlayerText = enPlayer;
 var enMonsterText = enMonster;
@@ -238,39 +238,11 @@ monster.appendChild(createMonsterAvatar);
 
 let monsterAvatarBox = document.getElementsByClassName('monster-avatar')[0];
 let createMonsterAvatarImage = document.createElement('img');
-createMonsterAvatarImage.setAttribute('id', 'monster-avatar-image');
+createMonsterAvatarImage.setAttribute('id', 'monster-avatar-idle');
 monsterAvatarBox.appendChild(createMonsterAvatarImage);
 
-let monsterAvatarImage = document.getElementById('monster-avatar-image');
-
-function zombieIdle() {
-    y = (y === zombieIdleImages.length - 1) ? 0 : y + 1;
-    monsterAvatarImage.src = zombieIdleImages[y];
-}
-
-let zombieIdleImages = [
-        "asset/img/character/zombie/male/Idle (1).png",
-        "asset/img/character/zombie/male/Idle (2).png",
-        "asset/img/character/zombie/male/Idle (3).png",
-        "asset/img/character/zombie/male/Idle (4).png",
-        "asset/img/character/zombie/male/Idle (5).png",
-        "asset/img/character/zombie/male/Idle (6).png",
-        "asset/img/character/zombie/male/Idle (7).png",
-        "asset/img/character/zombie/male/Idle (8).png",
-        "asset/img/character/zombie/male/Idle (9).png",
-        "asset/img/character/zombie/male/Idle (10).png",
-        "asset/img/character/zombie/male/Idle (11).png",
-        "asset/img/character/zombie/male/Idle (12).png",
-        "asset/img/character/zombie/male/Idle (13).png",
-        "asset/img/character/zombie/male/Idle (14).png",
-        "asset/img/character/zombie/male/Idle (15).png",
-    ],
-    y = -1;
-
-function startZombieIdle() {
-    setInterval(zombieIdle, 60);
-}
-startZombieIdle();
+let monsterAvatarIdle = document.getElementById('monster-avatar-idle');
+monsterAvatarIdle.src = "asset/img/character/gif/zombie_male_idle.gif"
 
 // Create Player Hit Damage Box
 let createPlayerHitDamageBox = document.createElement('div');
