@@ -40,4 +40,9 @@ level1Btn.addEventListener("click", function () {
   map_m.style.display = "none";
   battle.style.display = "block";
   level1.style.display = "block";
+
+  var tim = document.getElementById("panggilTime");
+  tim.innerHTML = soalAwal();
+  var bat = document.getElementById("panggilBattle");
+  bat.innerHTML = hitungWaktu();
 });

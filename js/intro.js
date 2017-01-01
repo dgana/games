@@ -11,6 +11,13 @@ intro_i.style.display = "block";
 battle_i.style.display = "none";
 map_i.style.display = "none";
 
+// Song
+let createIntroAudio = document.createElement('audio');
+createIntroAudio.setAttribute("id", "intro-song");
+createIntroAudio.setAttribute("src", "asset/song/map.mp3");
+intro_i.appendChild(createIntroAudio);
+//createIntroAudio.play();
+
 // Buttons
 var startBtn = document.createElement("img");
 startBtn.setAttribute("id", "start");
@@ -65,6 +72,4 @@ creditBtn.addEventListener("click", function () {
     backBtn.style.display = "none";
     midPanel.style.display = "none";
   });
-
-
 });

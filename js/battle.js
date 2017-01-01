@@ -24,7 +24,6 @@ let level5 = document.getElementById('level5');
 let level6 = document.getElementById('level6');
 let level7 = document.getElementById('level7');
 
-
 var enPlayer     = 1000;
 var enMonster    = 1000;
 var enPlayerText = enPlayer;
@@ -171,7 +170,7 @@ function hitungWaktu(){
         x++
     }, 1000);
 };
-hitungWaktu();
+
 // Player Status Box!
 let player = document.getElementsByClassName('player')[0];
 let createPlayerStatus = document.createElement('div');
@@ -378,7 +377,6 @@ function soalInti(){
                     intro.style.display = "none";
                     map.style.display = 'block';
                 };
-
                 lanjut();
         }, 10000);
     };
@@ -462,11 +460,16 @@ function soalInti(){
                 battle.style.display = 'none';
                 intro.style.display = "none";
                 map.style.display = 'block';
-                // alert('GAME OVER');
             };
         });
     };
 };
 
-//MULAI GAMEEEEEEEE!
-soalAwal();
+
+var createBattle_m = document.createElement("script");
+createBattle_m.setAttribute("id", "panggilBattle");
+level1.appendChild(createBattle_m);
+
+var createTime_m = document.createElement("script");
+createTime_m.setAttribute("id", "panggilTime");
+level1.appendChild(createTime_m);
