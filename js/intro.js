@@ -31,18 +31,6 @@ midPanel.setAttribute("class", "general-panel mid-panel")
 var spanMidPanel = document.createElement("span");
 spanMidPanel.setAttribute("id", "mid-panel-text");
 spanMidPanel.setAttribute("class", "text");
-var maleNinjaImg = document.createElement("img");
-maleNinjaImg.setAttribute("src", "asset/img/opening/ninja_male_run.gif");
-maleNinjaImg.setAttribute("id", "male-ninja");
-maleNinjaImg.setAttribute("class", "button");
-spanMidPanel.appendChild(maleNinjaImg);
-maleNinjaImg.style.opacity = 0;
-var femaleNinjaImg = document.createElement("img");
-femaleNinjaImg.setAttribute("src", "asset/img/opening/n_f (9).gif");
-femaleNinjaImg.setAttribute("id", "female-ninja");
-femaleNinjaImg.setAttribute("class", "button");
-spanMidPanel.appendChild(femaleNinjaImg);
-femaleNinjaImg.style.opacity = 0;
 
 midPanel.appendChild(spanMidPanel);
 intro.appendChild(midPanel);
@@ -59,6 +47,8 @@ creditBtn.addEventListener("click", function () {
   startBtn.style.display = "none";
   creditBtn.style.display = "none";
   midPanel.style.display = "block";
+  var midPanelText = document.getElementById("mid-panel-text");
+  midPanelText.innerHTML = "<h4>Designer:</h4>" + "<p>Irwin Pratajaya, Fadly Kayo, Ida Bagus Chahya Dhegana</p>" + "<h4>Programmer:</h4>" + "<p>Yoma Sofwan, Ida Bagus Chahya Dhegana, Fadly Kayo</p>" + "<h4>Sound Engineer:</h4>" + "<p>Ida Bagus Chahya Dhegana</p>" + "<h4>Story:</h4>" + "<p>Isumi Karinaningsih</p>";
 
   var backBtn = document.createElement("img");
   backBtn.setAttribute("id", "back");

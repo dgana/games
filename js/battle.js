@@ -3,7 +3,7 @@
 let battle = document.getElementById('battle');
 
 battle.className = 'background-arena1';
-        
+
 var enPlayer     = 700;
 var enMonster    = 1000;
 var enPlayerText = enPlayer;
@@ -28,14 +28,14 @@ for(let i=0 ; i<10 ; i++){
         pilihan1 = z-20;
         pilihan2 = z+10;
         pilihan3 = z-5;
-    };  
+    };
     arrSoal[i].push(x+' + '+y);
     arrSoal[i].push(z.toString());
     arrSoal[i].push(z.toString());
     arrSoal[i].push(pilihan3);
     arrSoal[i].push(pilihan1);
     arrSoal[i].push(pilihan2);
-};          
+};
 
 for(let i=10 ; i<20 ; i++){
     arrSoal.push([]);
@@ -54,7 +54,7 @@ for(let i=10 ; i<20 ; i++){
         pilihan1 = z+20;
         pilihan2 = z-10;
         pilihan3 = z+15;
-    };  
+    };
     arrSoal[i].push(x+' - '+y);
     arrSoal[i].push(z.toString());
     arrSoal[i].push(z.toString());
@@ -310,7 +310,7 @@ function soalAwal(){
 };
 
 function soalInti(){
-    let i=0;            
+    let i=0;
     function lanjut(){
         document.getElementById('question').innerHTML=arrSoal[i+1][0];
         var tam1, tam2, tam3, tam4;
@@ -320,8 +320,8 @@ function soalInti(){
                 tam2 = Math.floor((Math.random() * 4));
                 tam3 = Math.floor((Math.random() * 4));
                 tam4 = Math.floor((Math.random() * 4));
-            }  
-            while (tam1 == tam2 || tam1 == tam3 || tam1 == tam4 || tam2 == tam3 || tam2 == tam4 || tam3 == tam4);  
+            }
+            while (tam1 == tam2 || tam1 == tam3 || tam1 == tam4 || tam2 == tam3 || tam2 == tam4 || tam3 == tam4);
         }
         calculate();
 
@@ -346,7 +346,7 @@ function soalInti(){
                 for(let j=0 ; j<4 ; j++){
                     if (arrSoal[i][1] === document.getElementById('answer-button-'+[j+1]).innerHTML){
                         document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(66, 131, 63)';
-                    }                       
+                    }
                     gameButton[j].setAttribute('disabled', 'disabled');
                     gameButton[j].style.cursor = 'wait';
                 }
@@ -355,8 +355,8 @@ function soalInti(){
                 playerHitDamage.style.opacity = '1';
                 playerHitDamage.style.bottom = '40px';
 
-                playerHitDamage.innerHTML = phit+' dmg!';   
-                
+                playerHitDamage.innerHTML = phit+' dmg!';
+
                 setTimeout(function() {
                     playerHitDamage.style.visibility = 'hidden';
                     playerHitDamage.style.opacity = '0';
@@ -377,44 +377,44 @@ function soalInti(){
                         gameButton[j].style.cursor = 'pointer';
                     }
 
-                }, 1500);               
+                }, 1500);
                 if(enMonster<=0 || enPlayer<=0){
-                    clearTimeout(hentiTimeout); 
+                    clearTimeout(hentiTimeout);
                     clearInterval(hentikanWaktu);
                     battle.removeChild(createBattle);
                     alert('GAME OVER');
                 };
 
                 lanjut();
-        }, 10000);              
+        }, 10000);
     };
     lanjut();
 
     for(let j=0 ; j<4 ; j++){
         document.getElementById('answer-button-'+[j+1]).addEventListener('click', function() {
-            clearTimeout(hentiTimeout); 
-            clearInterval(hentikanWaktu);       
+            clearTimeout(hentiTimeout);
+            clearInterval(hentikanWaktu);
 
             let jawab = [0,1,2,3];
             jawab[j] = document.getElementById('answer-button-'+[j+1]).innerHTML;
             if(jawab[j] === arrSoal[i][1]){
                 var mhit = Math.floor((Math.random() * 100) + 30)
                 console.log('Power hit '+mhit);
-                enMonster = enMonster-mhit;                 
+                enMonster = enMonster-mhit;
                 barMonster = barMonster-mhit;
             }
             else{
                 document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(189, 60, 60)';
                 var phit = Math.floor((Math.random() * 100) + 30)
                 console.log('Mons+er defense '+phit);
-                enPlayer = enPlayer-phit;                       
+                enPlayer = enPlayer-phit;
                 barPlayer = barPlayer-phit;
             }
 
             for(let j=0 ; j<4 ; j++){
                 if (arrSoal[i][1] === document.getElementById('answer-button-'+[j+1]).innerHTML){
                     document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(66, 131, 63)';
-                }                       
+                }
                 gameButton[j].setAttribute('disabled', 'disabled');
                 gameButton[j].style.cursor = 'wait';
             }
@@ -431,9 +431,9 @@ function soalInti(){
                 monsterHitDamage.innerHTML = mhit+' dmg!';
             };
             if(phit>0){
-                playerHitDamage.innerHTML = phit+' dmg!';   
+                playerHitDamage.innerHTML = phit+' dmg!';
             };
-            
+
             setTimeout(function() {
                 playerHitDamage.style.visibility = 'hidden';
                 playerHitDamage.style.opacity = '0';
@@ -463,7 +463,7 @@ function soalInti(){
             }, 1500);
 
             if(enMonster<=0 || enPlayer<=0){
-                clearTimeout(hentiTimeout); 
+                clearTimeout(hentiTimeout);
                 clearInterval(hentikanWaktu);
                 battle.removeChild(createBattle);
                 alert('GAME OVER');
@@ -473,4 +473,4 @@ function soalInti(){
 };
 
 //MULAI GAMEEEEEEEE!
-soalAwal();
+//soalAwal();
