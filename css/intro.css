@@ -9,7 +9,7 @@
   left:0;
   width: 100%;
   height: 100%;
-  cursor: pointer;
+  cursor: default;
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Chrome/Safari/Opera */
      -khtml-user-select: none; /* Konqueror */
@@ -29,12 +29,27 @@
   background-size: cover;
 }
 
-.start {
-
+.general-panel {
+  background-color: black;
+  opacity: 0.8;
+  font-size: 18px;
+  border-radius: 30px 30px;
+  position: fixed;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
 }
 
-.credit {
-
+.mid-panel {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 78%;
+  width: 57.5%;
 }
 
 .button {
@@ -42,6 +57,27 @@
   cursor: pointer;
 }
 
-.button:hover {
+#start {
+  top: 65%;
+  left: 40%;
+}
 
+#credit {
+  top: 76%;
+  left: 37%;
+}
+
+#back {
+  bottom: 19%;
+  left: 0.5%;
+}
+
+#male-ninja {
+  cursor: default;
+}
+
+#female-ninja {
+  cursor: default;
+  top: -12%;
+  left: 50%;
 }
