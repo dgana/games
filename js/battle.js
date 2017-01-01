@@ -469,4 +469,4 @@ function soalInti(){
 };
 
 //MULAI GAMEEEEEEEE!
-//soalAwal();
+soalAwal();
