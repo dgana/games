@@ -370,8 +370,8 @@ function soalInti(){
                 if(enMonster<=0 || enPlayer<=0){
                     clearTimeout(hentiTimeout); 
                     clearInterval(hentikanWaktu);
-                    level1.removeChild(createBattle);
-                    alert('GAME OVER');
+                    battle.style.display = 'none';
+                    map.style.display = 'block';
                 };
 
                 lanjut();
@@ -456,7 +456,7 @@ function soalInti(){
                 clearInterval(hentikanWaktu);
                 battle.style.display = 'none';
                 map.style.display = 'block';
-                alert('GAME OVER');
+                // alert('GAME OVER');
             };
         });
     };
