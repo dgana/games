@@ -22,14 +22,14 @@ map_m.style.display = "none";
 var level1Btn = document.createElement("img");
 level1Btn.setAttribute("id", "level-1");
 level1Btn.setAttribute("class", "button");
-level1Btn.setAttribute("src", "../asset/img/map/button_map.png");
+level1Btn.setAttribute("src", "asset/img/map/button_map.png");
 map_m.appendChild(level1Btn);
 level1Btn.style.opacity = 1;
 
 var level2Btn = document.createElement("img");
 level2Btn.setAttribute("id", "level-2");
 level2Btn.setAttribute("class", "button");
-level2Btn.setAttribute("src", "../asset/img/map/button_map.png");
+level2Btn.setAttribute("src", "asset/img/map/button_map.png");
 map_m.appendChild(level2Btn);
 level2Btn.style.opacity = 1;
 

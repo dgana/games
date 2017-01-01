@@ -23,3 +23,8 @@
   background: url('../asset/img/map/map.jpg') no-repeat center center;
   background-size: cover;
 }
+
+#level-1 {
+  top: 50%;
+  left: 50%;
+}
