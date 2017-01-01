@@ -20,6 +20,6 @@
 }
 
 .map {
-  background: url('map.jpg') no-repeat center center;
+  background: url('../asset/img/map/map.jpg') no-repeat center center;
   background-size: cover;
 }
