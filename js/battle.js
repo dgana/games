@@ -1,10 +1,27 @@
 /* Battle Javascript */
 
 let battle = document.getElementById('battle');
+let map = document.getElementById('map');
 
-battle.className = 'background-arena1';
+// battle.className = 'background-arena1';
+        
+for(let i = 1; i < 8; i++){
+    let createLevel = document.createElement('div');
+    createLevel.setAttribute('id','level'+i);
+    createLevel.setAttribute('class','background-arena'+i);
+    battle.appendChild(createLevel);
+}
 
-var enPlayer     = 700;
+let level1 = document.getElementById('level1');
+let level2 = document.getElementById('level2');
+let level3 = document.getElementById('level3');
+let level4 = document.getElementById('level4');
+let level5 = document.getElementById('level5');
+let level6 = document.getElementById('level6');
+let level7 = document.getElementById('level7');
+
+
+var enPlayer     = 1000;
 var enMonster    = 1000;
 var enPlayerText = enPlayer;
 var enMonsterText = enMonster;
@@ -28,14 +45,14 @@ for(let i=0 ; i<10 ; i++){
         pilihan1 = z-20;
         pilihan2 = z+10;
         pilihan3 = z-5;
-    };
+    };  
     arrSoal[i].push(x+' + '+y);
     arrSoal[i].push(z.toString());
     arrSoal[i].push(z.toString());
     arrSoal[i].push(pilihan3);
     arrSoal[i].push(pilihan1);
     arrSoal[i].push(pilihan2);
-};
+};          
 
 for(let i=10 ; i<20 ; i++){
     arrSoal.push([]);
@@ -54,7 +71,7 @@ for(let i=10 ; i<20 ; i++){
         pilihan1 = z+20;
         pilihan2 = z-10;
         pilihan3 = z+15;
-    };
+    };  
     arrSoal[i].push(x+' - '+y);
     arrSoal[i].push(z.toString());
     arrSoal[i].push(z.toString());
@@ -77,7 +94,7 @@ arrSoal = acak(arrSoal);
 
 let createBattle = document.createElement('div');
 createBattle.setAttribute('class', 'arena');
-battle.appendChild(createBattle);
+level1.appendChild(createBattle);
 
 let arena = document.getElementsByClassName('arena')[0];
 let createPlayer = document.createElement('div');
@@ -221,39 +238,11 @@ monster.appendChild(createMonsterAvatar);
 
 let monsterAvatarBox = document.getElementsByClassName('monster-avatar')[0];
 let createMonsterAvatarImage = document.createElement('img');
-createMonsterAvatarImage.setAttribute('id', 'monster-avatar-image');
+createMonsterAvatarImage.setAttribute('id', 'monster-avatar-idle');
 monsterAvatarBox.appendChild(createMonsterAvatarImage);
 
-let monsterAvatarImage = document.getElementById('monster-avatar-image');
-
-function zombieIdle() {
-    y = (y === zombieIdleImages.length - 1) ? 0 : y + 1;
-    monsterAvatarImage.src = zombieIdleImages[y];
-}
-
-let zombieIdleImages = [
-        "asset/img/character/zombie/male/Idle (1).png",
-        "asset/img/character/zombie/male/Idle (2).png",
-        "asset/img/character/zombie/male/Idle (3).png",
-        "asset/img/character/zombie/male/Idle (4).png",
-        "asset/img/character/zombie/male/Idle (5).png",
-        "asset/img/character/zombie/male/Idle (6).png",
-        "asset/img/character/zombie/male/Idle (7).png",
-        "asset/img/character/zombie/male/Idle (8).png",
-        "asset/img/character/zombie/male/Idle (9).png",
-        "asset/img/character/zombie/male/Idle (10).png",
-        "asset/img/character/zombie/male/Idle (11).png",
-        "asset/img/character/zombie/male/Idle (12).png",
-        "asset/img/character/zombie/male/Idle (13).png",
-        "asset/img/character/zombie/male/Idle (14).png",
-        "asset/img/character/zombie/male/Idle (15).png",
-    ],
-    y = -1;
-
-function startZombieIdle() {
-    setInterval(zombieIdle, 60);
-}
-startZombieIdle();
+let monsterAvatarIdle = document.getElementById('monster-avatar-idle');
+monsterAvatarIdle.src = "asset/img/character/gif/zombie_male_idle.gif"
 
 // Create Player Hit Damage Box
 let createPlayerHitDamageBox = document.createElement('div');
@@ -310,7 +299,7 @@ function soalAwal(){
 };
 
 function soalInti(){
-    let i=0;
+    let i=0;            
     function lanjut(){
         document.getElementById('question').innerHTML=arrSoal[i+1][0];
         var tam1, tam2, tam3, tam4;
@@ -320,8 +309,8 @@ function soalInti(){
                 tam2 = Math.floor((Math.random() * 4));
                 tam3 = Math.floor((Math.random() * 4));
                 tam4 = Math.floor((Math.random() * 4));
-            }
-            while (tam1 == tam2 || tam1 == tam3 || tam1 == tam4 || tam2 == tam3 || tam2 == tam4 || tam3 == tam4);
+            }  
+            while (tam1 == tam2 || tam1 == tam3 || tam1 == tam4 || tam2 == tam3 || tam2 == tam4 || tam3 == tam4);  
         }
         calculate();
 
@@ -346,7 +335,7 @@ function soalInti(){
                 for(let j=0 ; j<4 ; j++){
                     if (arrSoal[i][1] === document.getElementById('answer-button-'+[j+1]).innerHTML){
                         document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(66, 131, 63)';
-                    }
+                    }                       
                     gameButton[j].setAttribute('disabled', 'disabled');
                     gameButton[j].style.cursor = 'wait';
                 }
@@ -355,8 +344,8 @@ function soalInti(){
                 playerHitDamage.style.opacity = '1';
                 playerHitDamage.style.bottom = '40px';
 
-                playerHitDamage.innerHTML = phit+' dmg!';
-
+                playerHitDamage.innerHTML = phit+' dmg!';   
+                
                 setTimeout(function() {
                     playerHitDamage.style.visibility = 'hidden';
                     playerHitDamage.style.opacity = '0';
@@ -377,44 +366,44 @@ function soalInti(){
                         gameButton[j].style.cursor = 'pointer';
                     }
 
-                }, 1500);
+                }, 1500);               
                 if(enMonster<=0 || enPlayer<=0){
-                    clearTimeout(hentiTimeout);
+                    clearTimeout(hentiTimeout); 
                     clearInterval(hentikanWaktu);
-                    battle.removeChild(createBattle);
-                    alert('GAME OVER');
+                    battle.style.display = 'none';
+                    map.style.display = 'block';
                 };
 
                 lanjut();
-        }, 10000);
+        }, 10000);              
     };
     lanjut();
 
     for(let j=0 ; j<4 ; j++){
         document.getElementById('answer-button-'+[j+1]).addEventListener('click', function() {
-            clearTimeout(hentiTimeout);
-            clearInterval(hentikanWaktu);
+            clearTimeout(hentiTimeout); 
+            clearInterval(hentikanWaktu);       
 
             let jawab = [0,1,2,3];
             jawab[j] = document.getElementById('answer-button-'+[j+1]).innerHTML;
             if(jawab[j] === arrSoal[i][1]){
                 var mhit = Math.floor((Math.random() * 100) + 30)
                 console.log('Power hit '+mhit);
-                enMonster = enMonster-mhit;
+                enMonster = enMonster-mhit;                 
                 barMonster = barMonster-mhit;
             }
             else{
                 document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(189, 60, 60)';
                 var phit = Math.floor((Math.random() * 100) + 30)
                 console.log('Mons+er defense '+phit);
-                enPlayer = enPlayer-phit;
+                enPlayer = enPlayer-phit;                       
                 barPlayer = barPlayer-phit;
             }
 
             for(let j=0 ; j<4 ; j++){
                 if (arrSoal[i][1] === document.getElementById('answer-button-'+[j+1]).innerHTML){
                     document.getElementById('answer-button-'+[j+1]).style.backgroundColor = 'rgb(66, 131, 63)';
-                }
+                }                       
                 gameButton[j].setAttribute('disabled', 'disabled');
                 gameButton[j].style.cursor = 'wait';
             }
@@ -431,9 +420,9 @@ function soalInti(){
                 monsterHitDamage.innerHTML = mhit+' dmg!';
             };
             if(phit>0){
-                playerHitDamage.innerHTML = phit+' dmg!';
+                playerHitDamage.innerHTML = phit+' dmg!';   
             };
-
+            
             setTimeout(function() {
                 playerHitDamage.style.visibility = 'hidden';
                 playerHitDamage.style.opacity = '0';
@@ -462,15 +451,16 @@ function soalInti(){
                 hitungWaktu();
             }, 1500);
 
-            if(enMonster<=0 || enPlayer<=0){
-                clearTimeout(hentiTimeout);
+            if(enMonster<=0 || enPlayer<=0){ 
+                clearTimeout(hentiTimeout); 
                 clearInterval(hentikanWaktu);
-                battle.removeChild(createBattle);
-                alert('GAME OVER');
+                battle.style.display = 'none';
+                map.style.display = 'block';
+                // alert('GAME OVER');
             };
         });
     };
 };
 
 //MULAI GAMEEEEEEEE!
-//soalAwal();
+soalAwal();

@@ -39,3 +39,4 @@ level1Btn.addEventListener("click", function () {
   map_m.style.display = "none";
   level1.style.display = "block";
 });
+
