@@ -1,10 +1,27 @@
 /* Battle Javascript */
 
 let battle = document.getElementById('battle');
+let map = document.getElementById('map');
 
-battle.className = 'background-arena1';
+// battle.className = 'background-arena1';
         
-var enPlayer     = 700;
+for(let i = 1; i < 8; i++){
+    let createLevel = document.createElement('div');
+    createLevel.setAttribute('id','level'+i);
+    createLevel.setAttribute('class','background-arena'+i);
+    battle.appendChild(createLevel);
+}
+
+let level1 = document.getElementById('level1');
+let level2 = document.getElementById('level2');
+let level3 = document.getElementById('level3');
+let level4 = document.getElementById('level4');
+let level5 = document.getElementById('level5');
+let level6 = document.getElementById('level6');
+let level7 = document.getElementById('level7');
+
+
+var enPlayer     = 10;
 var enMonster    = 1000;
 var enPlayerText = enPlayer;
 var enMonsterText = enMonster;
@@ -77,7 +94,7 @@ arrSoal = acak(arrSoal);
 
 let createBattle = document.createElement('div');
 createBattle.setAttribute('class', 'arena');
-battle.appendChild(createBattle);
+level1.appendChild(createBattle);
 
 let arena = document.getElementsByClassName('arena')[0];
 let createPlayer = document.createElement('div');
@@ -381,7 +398,7 @@ function soalInti(){
                 if(enMonster<=0 || enPlayer<=0){
                     clearTimeout(hentiTimeout); 
                     clearInterval(hentikanWaktu);
-                    battle.removeChild(createBattle);
+                    level1.removeChild(createBattle);
                     alert('GAME OVER');
                 };
 
@@ -462,10 +479,11 @@ function soalInti(){
                 hitungWaktu();
             }, 1500);
 
-            if(enMonster<=0 || enPlayer<=0){
+            if(enMonster<=0 || enPlayer<=0){ 
                 clearTimeout(hentiTimeout); 
                 clearInterval(hentikanWaktu);
-                battle.removeChild(createBattle);
+                battle.style.display = 'none';
+                map.style.display = 'block';
                 alert('GAME OVER');
             };
         });
